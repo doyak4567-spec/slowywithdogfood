@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SLOWLY LIFE | 느린동행 사료 사전예약</title>
+<style>
+  :root{
+    --mint: #8fc3af;
+    --mint-dark: #4f8d78;
+    --mint-deep: #2f5c4c;
+    --mint-pale: #eaf5f0;
+    --mint-paler: #f5faf8;
+    --cream: #fdfcfa;
+    --ink: #2b332f;
+    --ink-soft: #5c655f;
+    --line: #dfece6;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family: "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", -apple-system, sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block;}
+  a{text-decoration:none;color:inherit;}
+  .wrap{max-width:880px;margin:0 auto;padding:0 24px;}
+  .eyebrow{
+    letter-spacing:.2em;
+    font-size:12px;
+    color: var(--mint-dark);
+    font-weight:600;
+    text-transform:uppercase;
+  }
+  section{padding:88px 0;}
+  h2{
+    font-size:30px;
+    font-weight:700;
+    color: var(--mint-deep);
+    letter-spacing:-0.01em;
+    margin:10px 0 14px;
+  }
+  .sub{
+    color:var(--ink-soft);
+    font-size:15.5px;
+    margin-bottom:48px;
+  }
+  .center{text-align:center;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:0;
+  }
+  .hero img{width:100%;height:auto;}
+  .hero-note{
+    text-align:center;
+    background: var(--mint-deep);
+    color:#fff;
+    padding:14px 24px;
+    font-size:14px;
+    letter-spacing:.04em;
+  }
+
+  /* ---------- INFO IMAGE (공감 / 급여 안내) ---------- */
+  .info-image img{
+    width:100%;
+    border-radius:18px;
+    border:1px solid var(--line);
+  }
+
+  /* ---------- PRODUCT ---------- */
+  .product-grid{
+    display:grid;
+    grid-template-columns: 1fr;
+    gap:56px;
+  }
+  .product-row{
+    display:grid;
+    grid-template-columns: 1fr;
+    gap:24px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:18px;
+    overflow:hidden;
+  }
+  .product-row img{width:100%;}
+  .product-row .cap{
+    padding:22px 26px 28px;
+  }
+  .product-row .cap h3{
+    font-size:18px;
+    color:var(--mint-deep);
+    margin-bottom:8px;
+    font-weight:700;
+  }
+  .product-row .cap p{
+    font-size:14.5px;
+    color:var(--ink-soft);
+  }
+  @media(min-width:680px){
+    .product-grid{grid-template-columns:1fr 1fr;}
+  }
+
+  /* ---------- DATA / CHART ---------- */
+  .data-section{
+    background: var(--mint-pale);
+  }
+  .chart-card{
+    background:#fff;
+    border-radius:18px;
+    padding:36px 32px 28px;
+    border:1px solid var(--line);
+  }
+  .chart-note{
+    font-size:13px;
+    color:var(--ink-soft);
+    margin-bottom:28px;
+  }
+  .bar-row{
+    margin-bottom:20px;
+  }
+  .bar-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    margin-bottom:8px;
+  }
+  .bar-label{font-size:14px;color:var(--ink);}
+  .bar-pct{font-size:13.5px;color:var(--mint-deep);font-weight:700;}
+  .bar-track{
+    background: var(--mint-paler);
+    border:1px solid var(--line);
+    border-radius:8px;
+    overflow:hidden;
+    height:16px;
+    width:100%;
+  }
+  .bar-fill{
+    height:100%;
+    background: linear-gradient(90deg, var(--mint), var(--mint-dark));
+    border-radius:8px;
+    width:0;
+  }
+  .data-caption{
+    margin-top:22px;
+    font-size:13px;
+    color:var(--ink-soft);
+    border-top:1px dashed var(--line);
+    padding-top:16px;
+  }
+  .sample-tag{
+    display:inline-block;
+    font-size:11px;
+    color:#fff;
+    background: var(--mint-dark);
+    padding:2px 8px;
+    border-radius:20px;
+    margin-left:6px;
+    vertical-align:middle;
+    letter-spacing:.02em;
+  }
+
+  /* ---------- REVIEWS ---------- */
+  .review-grid{
+    display:grid;
+    grid-template-columns: 1fr;
+    gap:20px;
+  }
+  @media(min-width:680px){
+    .review-grid{grid-template-columns:1fr 1fr;}
+  }
+  .review-card{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:26px 24px;
+  }
+  .stars{
+    color:#e8b84b;
+    font-size:15px;
+    letter-spacing:2px;
+    margin-bottom:12px;
+  }
+  .review-card p.quote{
+    font-size:14.5px;
+    color:var(--ink);
+    margin-bottom:16px;
+    line-height:1.7;
+  }
+  .review-card .who{
+    font-size:12.5px;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- FORM ---------- */
+  .form-section{
+    background: var(--mint-deep);
+    color:#fff;
+  }
+  .form-section .eyebrow{color: var(--mint);}
+  .form-section h2{color:#fff;}
+  .form-section .sub{color: #cfe6dc;}
+  .form-card{
+    background:#fff;
+    border-radius:18px;
+    padding:36px 32px;
+    max-width:480px;
+    margin:0 auto;
+  }
+  .field{margin-bottom:16px;}
+  .field label{
+    display:block;
+    font-size:13px;
+    color:var(--ink-soft);
+    margin-bottom:6px;
+  }
+  .field input{
+    width:100%;
+    padding:13px 14px;
+    border:1px solid var(--line);
+    border-radius:10px;
+    font-size:14.5px;
+    color:var(--ink);
+    background: var(--mint-paler);
+  }
+  .field input:focus{
+    outline:none;
+    border-color: var(--mint-dark);
+    background:#fff;
+  }
+  .submit-btn{
+    width:100%;
+    padding:15px;
+    margin-top:8px;
+    background: var(--mint-deep);
+    color:#fff;
+    border:none;
+    border-radius:10px;
+    font-size:15.5px;
+    font-weight:700;
+    letter-spacing:.02em;
+    cursor:pointer;
+    transition:.2s;
+  }
+  .submit-btn:hover{background:var(--mint-dark);}
+  .form-foot{
+    text-align:center;
+    font-size:12px;
+    color:#cfe6dc;
+    margin-top:18px;
+  }
+  .confirm-msg{
+    display:none;
+    text-align:center;
+    color:var(--mint-deep);
+    font-size:14.5px;
+    font-weight:600;
+    margin-top:14px;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding:40px 24px 60px;
+    text-align:center;
+    color: var(--ink-soft);
+    font-size:12.5px;
+    background: var(--cream);
+  }
+  footer .brand{
+    font-size:13px;
+    letter-spacing:.2em;
+    color: var(--mint-deep);
+    font-weight:700;
+    margin-bottom:10px;
+  }
+  footer .legal{
+    margin-top:14px;
+    line-height:1.8;
+    color:#9aa39d;
+  }
+</style>
+</head>
+<body>
+
+  <!-- 상단 배너 -->
+  <div class="hero">
+    <img src="../images/hero-banner.png" alt="SLOWLY LIFE 느린동행 사료 배너">
+    <div class="hero-note">7세 이상 노령견을 위한 연어 &amp; 오리 사료 · 사전예약 오픈</div>
+  </div>
+
+  <!-- 공감 -->
+  <section>
+    <div class="wrap">
+      <div class="eyebrow">Concern</div>
+      <h2>이런 변화, 느껴지고 계신가요?</h2>
+      <p class="sub">나이가 들수록, 우리 아이의 식사도 달라져야 합니다.</p>
+      <div class="info-image">
+        <img src="../images/problem-awareness.png" alt="나이가 들수록 식사도 달라져야 하니까">
+      </div>
+    </div>
+  </section>
+
+  <!-- 제품 소개 -->
+  <section>
+    <div class="wrap">
+      <div class="eyebrow">Product</div>
+      <h2>느린동행을 선택하는 이유</h2>
+      <p class="sub">나이 든 반려견의 하루 한 끼, 조용히 더 세심하게 설계했습니다.</p>
+
+      <div class="product-grid">
+        <div class="product-row">
+          <img src="../images/salmon-duck-blend.png" alt="연어와 오리의 조화">
+          <div class="cap">
+            <h3>연어와 오리의 조화</h3>
+            <p>기호성과 영양 밸런스를 고려해 고른 연어와 오리, 두 원료의 균형으로 완성했습니다.</p>
+          </div>
+        </div>
+        <div class="product-row">
+          <img src="../images/balanced-nutrition.png" alt="균형 잡힌 영양 설계">
+          <div class="cap">
+            <h3>균형 잡힌 영양 설계</h3>
+            <p>관절·소화·면역·피부까지, 나이 든 반려견에게 꼭 필요한 영양을 고루 담았습니다.</p>
+          </div>
+        </div>
+        <div class="product-row">
+          <img src="../images/senior-dog-mealtime.png" alt="느린동행을 선택하는 이유">
+          <div class="cap">
+            <h3>노견의 식사 시간을 생각한 사료</h3>
+            <p>나이가 든 반려견도 부담 없이, 오래도록 건강하고 편안하게 함께할 수 있도록 만들었습니다.</p>
+          </div>
+        </div>
+        <div class="product-row">
+          <img src="../images/quality-assurance.png" alt="믿고 급여할 수 있는 느린동행 사료">
+          <div class="cap">
+            <h3>믿고 급여할 수 있는 품질</h3>
+            <p>인공색소·인공향료·보존제 없이, 엄선한 원료와 꼼꼼한 품질 관리로 만듭니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 급여 안내 -->
+  <section>
+    <div class="wrap">
+      <div class="eyebrow">Feeding Guide</div>
+      <h2>체중별 하루 권장 급여량</h2>
+      <p class="sub">우리 아이의 체중에 맞게, 꼭 필요한 만큼만 급여해주세요.</p>
+      <div class="info-image">
+        <img src="../images/feeding-guide.png" alt="느린동행 사료 급여 안내">
+      </div>
+    </div>
+  </section>
+
+  <!-- 데이터로 보는 이유 -->
+  <section class="data-section">
+    <div class="wrap">
+      <div class="eyebrow">Why It Matters</div>
+      <h2>데이터로 보는, 노령견 사료의 이유</h2>
+      <p class="sub">기존 사료에 대한 보호자들의 환불 사유를 살펴보면, 느린동행이 왜 다르게 설계되었는지 알 수 있습니다. <span class="sample-tag">샘플 데이터</span></p>
+
+      <div class="chart-card">
+        <div class="chart-note">일반 사료 환불 사유 비중 (예시 데이터 · 추후 실제 데이터로 교체 예정)</div>
+
+        <div class="bar-row">
+          <div class="bar-top"><span class="bar-label">입맛에 맞지 않음</span><span class="bar-pct">38%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:38%"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-top"><span class="bar-label">소화 불편</span><span class="bar-pct">27%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:27%"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-top"><span class="bar-label">알갱이가 딱딱함</span><span class="bar-pct">19%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:19%"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-top"><span class="bar-label">영양 밸런스 우려</span><span class="bar-pct">16%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:16%"></div></div>
+        </div>
+
+        <div class="data-caption">느린동행은 위 사유들을 고려해 기호성, 소화 편의성, 영양 밸런스를 중심으로 설계했습니다.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 고객 후기 -->
+  <section>
+    <div class="wrap">
+      <div class="eyebrow">Review</div>
+      <h2>먼저 만난 보호자들의 이야기</h2>
+      <p class="sub">예시 후기이며, 정식 출시 후 실제 후기로 교체될 예정입니다. <span class="sample-tag">샘플 데이터</span></p>
+
+      <div class="review-grid">
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p class="quote">"10살 골든리트리버인데 예전보다 식사 속도가 느려져서 걱정이었어요. 급여 가이드대로 나눠 주니 훨씬 편안해 보여요."</p>
+          <div class="who">보호자 김〇〇 · 반려견 7세 이상</div>
+        </div>
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p class="quote">"소화가 약한 아이라 늘 조심스러웠는데, 소화가 편안해졌다는 걸 체감하고 있어요. 꾸준히 급여해볼 생각입니다."</p>
+          <div class="who">보호자 이〇〇 · 반려견 9세</div>
+        </div>
+        <div class="review-card">
+          <div class="stars">★★★★☆</div>
+          <p class="quote">"연어와 오리 조합이라 기호성이 좋다고 들었는데, 저희 아이도 거부감 없이 잘 먹어서 안심이에요."</p>
+          <div class="who">보호자 박〇〇 · 반려견 8세</div>
+        </div>
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p class="quote">"인공색소·향료가 없다는 점이 가장 마음에 들었어요. 나이 든 아이에게 더 신경 써주고 싶어서 사전예약했습니다."</p>
+          <div class="who">보호자 정〇〇 · 반려견 10세</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 사전예약 폼 -->
+  <section class="form-section">
+    <div class="wrap center">
+      <div class="eyebrow">Pre-Order</div>
+      <h2>느린동행, 가장 먼저 만나보세요</h2>
+      <p class="sub">사전예약 하신 분께 출시 소식과 혜택을 가장 먼저 안내드립니다.</p>
+
+      <div class="form-card">
+        <form id="preorder-form">
+          <div class="field">
+            <label for="name">이름</label>
+            <input type="text" id="name" name="name" placeholder="이름을 입력해주세요" required>
+          </div>
+          <div class="field">
+            <label for="email">이메일</label>
+            <input type="email" id="email" name="email" placeholder="이메일을 입력해주세요" required>
+          </div>
+          <button type="submit" class="submit-btn">사전예약 신청하기</button>
+        </form>
+        <p class="confirm-msg" id="confirm-msg">사전예약이 접수되었습니다. 감사합니다.</p>
+        <p class="form-foot">입력하신 정보는 사전예약 안내 목적으로만 사용됩니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 하단 -->
+  <footer>
+    <div class="brand">SLOWLY LIFE</div>
+    <div>THE OLD ANIMAL LIFESTYLE CREATOR</div>
+    <div class="legal">
+      본 페이지의 환불 사유 데이터와 고객 후기는 예시(샘플) 데이터입니다.<br>
+      © SLOWLY LIFE. All rights reserved.
+    </div>
+  </footer>
+
+<script>
+  document.getElementById('preorder-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    document.getElementById('confirm-msg').style.display = 'block';
+    this.reset();
+  });
+</script>
+
+</body>
+</html>
